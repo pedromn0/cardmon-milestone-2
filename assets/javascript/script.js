@@ -1,85 +1,39 @@
-// Function to Start the game. It will reunite generate PokeId, Fetch Pokemon
+// Function Start the game. It will run randomUrl and cardSelection after an eventlistner click on the button start. 
 
-// Function to ramdomize the 10 id and insert it each of the previous function
-let pokeArray = [];
+// Function to ramdomize 10 id and insert them in an array
+let urlArray=[];
 
-function generatePokeId () {
-    for (let i = 0; i < 11; i++) {
-        pokeArray.push(Math.floor(Math.random()*897)+1);
-    }
-    return pokeArray;
-}
-
-generatePokeId ();
-
-// function to fetch one Pokemon and create an object
-function fetchPokemon () {
-    const url = `https://pokeapi.co/api/v2/pokemon/1`; 
-    fetch(url)
-        .then(response => response.json())
-        .then((data) => {
-            const pokemon = {
-                id: data.id,
-                name: data.name,
-                sprites: data.sprites[`front_default`],
-                types: data.types
-            }
-            console.log(pokemon);
-        });
-};
-
-fetchPokemon ();
-
-// function to fetch eleven Pokemon and create an object of each of them
-
-let idArray = [];
-let endpointArray=[];
-
-function randomPokeArray () {
+function randomUrl () {
+    let idArray = [];
     for (let i = 0; i < 11; i++) {
         idArray.push(Math.floor(Math.random()*897)+1);
     }
-    idArray.forEach(id => endpointArray.push(`https://pokeapi.co/api/v2/pokemon/${id}`));
-    console.log(endpointArray);
+    idArray.forEach(id => urlArray.push(`https://pokeapi.co/api/v2/pokemon/${id}`));
 }
 
-randomPokeArray ();
+randomUrl ();
 
-function fetchElevenPokemon (endpointArray) {
-    let url;
-    endpointArray.forEach(url)
-    fetch(url)
+// function to create an array populated with 10 objects of pokemon fetched from pokeapi
+let selectedPokeArray =[];
+
+function cardSelection () {
+    urlArray.forEach(url => fetch(url)
         .then(response => response.json())
         .then((data) => {
-            const pokemon = {
+            const pokemon = selectedPokeArray.push({
                 id: data.id,
                 name: data.name,
                 sprites: data.sprites[`front_default`],
                 types: data.types
-            }
-            console.log(pokemon);
-        });
-};
-
-fetchElevenPokemon ();
-
-// function to get the image
-function getPokemonId () {
-    const url = "https://pokeapi.co/api/v2/pokemon/";
-    pokeArray.forEach(id => console.log(`https://pokeapi.co/api/v2/pokemon/${id}`));
+            });
+            
+        }));
+        console.log(selectedPokeArray);    
 }
 
-getPokemonId ();
-
-const sprite = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
-
-// Function to get type
-
-// Function to get the name
+cardSelection ();
 
 // Function to randomize the order od the pokemon on the 20 available cards
-
-// Event listner to start the game
 
 // Event listner to restart the game and utilize the random function to work again
 
