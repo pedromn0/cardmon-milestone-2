@@ -2,6 +2,7 @@
 
 function start (event) {
     randomUrl();
+    clickCard();
 }
 
 let btnStart = document.getElementById('btnStart');
@@ -61,6 +62,18 @@ function displayPokeInfo () {
 // Create a funciton restart which will trigger through an event listner click on restart the game and start the functions from the start.
 
 // Create a event lister to allow card selection clinking on them. 
+
+function clickCard () {
+    function addBorder(event) {
+        this.classList.toggle('cardBorder');
+    }
+
+    let cards = document.getElementsByClassName('card');
+    for (let i = 0; i < cards.length; i++) {
+        cards[i].addEventListener("click", addBorder);
+    }    
+}
+
 
 // function to count movements and increase one point for each two selection wrong
 

@@ -13,3 +13,10 @@
 body {
     background-color: #e6dfdf8c;
 }
+
+/* Cards */
+
+.cardBorder {
+    border: 3px solid rgba(255, 0, 0, 0.87);
+    box-shadow: 5px 10px rgba(128, 128, 128, 0.562);
+}
