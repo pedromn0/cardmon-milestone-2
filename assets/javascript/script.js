@@ -1,16 +1,24 @@
-// Function start the game run randomUrl and cardSelection after an eventlistner click on the button start.
-
+/**
+ * Function start the game run randomUrl and cardSelection after an 
+ * eventlistner click on the button start.
+ */
 function start (event) {
     randomUrl();
-    clickCard();
+    hoverCards();
+    flipCards();
 }
 
 let btnStart = document.getElementById('btnStart');
 btnStart.addEventListener("click", start);
 
-// Function randomUrl randomize 10 id numbers, add them to urls and insert them in an array
-let urlArray=[];
+/**Create a funciton restart which will trigger through an event listner
+ * click on restart the game and start the functions from the start. 
+ */
 
+/**
+ * Function randomize 10 id numbers and append this id numbers to urls in the 
+ * format of API endpoint and insert through push into urlArray
+ */
 function randomUrl () {
     let idArray = [];
     for (let i = 0; i < 10; i++) {
@@ -21,9 +29,12 @@ function randomUrl () {
     cardSelection();
 }
 
-// function to create an array populated with 10 objects of pokemon fetched from pokeapi
-let selectedPokeArray =[];
+let urlArray=[];
 
+/**
+ * function to populated selectedPokeArray with 10 pokemon objects with fetch 
+ * information from pokeapi
+ */
 function cardSelection () {
     urlArray.forEach(url => fetch(url)
         .then(response => response.json())
@@ -39,15 +50,23 @@ function cardSelection () {
         setTimeout(randomPokeArray, 1000);
 }
 
-// The credit for this code is from [https://flaviocopes.com/how-to-shuffle-array-javascript/] - Function to shuffle the order of the pokemon objects inside the array selecedPokeArray
+let selectedPokeArray =[];
+
+// The credit for this code is from [https://flaviocopes.com/how-to-shuffle-array-javascript/]
+/**
+ * Function to shuffle the order of the pokemon objects inside the array 
+ * selecedPokeArray
+ */
 function randomPokeArray() {
     selectedPokeArray.sort(() => Math.random() - 0.5);
      console.log(selectedPokeArray);
      displayPokeInfo();
 }
 
-// function to replace the html attributes of the 20 cards through the 20 objects organised into the array selectedPokeArray
-
+/**
+ * function to replace the html attributes of the 20 cards through the 
+ * 20 objects organised into the array selectedPokeArray
+ */
 function displayPokeInfo () {
     let pokeName = document.getElementsByClassName('pokeName');
     let sprites = document.getElementsByClassName('sprites');
@@ -59,23 +78,48 @@ function displayPokeInfo () {
     }
 } 
 
-// Create a funciton restart which will trigger through an event listner click on restart the game and start the functions from the start.
+/**
+ * Function which create a event lister click to flip the card from backface to 
+ * frontFace through toggle backface class
+ */
+function flipCards() {
+    function removeBackFace(event) {
+        this.classList.toggle('backFace');
+    }
 
-// Create a event lister to allow card selection clinking on them. 
+    let pokeCard = document.getElementsByClassName('pokeCard');
+    for (let i = 0; i < pokeCard.length; i++) {
+        pokeCard[i].addEventListener("click", removeBackFace);
+    }    
+}
 
-function clickCard () {
+/**
+ * Function which create a event lister click on every card toggle class to add 
+ * border and promote visual feedback  
+ */
+function hoverCards () {
     function addBorder(event) {
         this.classList.toggle('cardBorder');
+        // console.log('clicked');
+    }
+
+    function removeBorder(event) {
+        this.classList.remove('cardBorder');
     }
 
     let cards = document.getElementsByClassName('card');
     for (let i = 0; i < cards.length; i++) {
-        cards[i].addEventListener("click", addBorder);
+        cards[i].addEventListener("mouseover", addBorder);
+        cards[i].addEventListener("mouseleave", removeBorder);
     }    
 }
 
+// Replace click to hover to toggle border into eventListner and use click to flip the card 
 
-// function to count movements and increase one point for each two selection wrong
+/**
+ * function to count movements and increase one point for each two
+ * selection wrong
+ */
 
 // function to count and increade one of each two card selections right
 

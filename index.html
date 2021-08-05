@@ -8,10 +8,16 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
     <!-- CSS sheet -->
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Cardmon</title>
   </head>
+
   <body>
     <!-- Navbar Bootstrap -->
     <ul class="nav justify-content-center mt-1">
@@ -62,13 +68,17 @@
       <div class="row row-cols-5 mb-4">
         <div id="columnCard1" class="col d-flex justify-content-center">
           <div class="card" id='card1' style="width: 12rem;">
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/44.png" class="card-img-top sprites" alt="...">
-            <div class="card-body">
-              <h5 class="card-title pokeName">gloom</h5>
-              <p class="card-text pokeType">grass</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+            <div class="frontFace">
+              <img src="..." class="card-img-top sprites" alt="...">
+              <div class="card-body">
+                <h5 class="card-title pokeName">gloom</h5>
+                <p class="card-text pokeType">grass</p>
+              </div>
             </div>
-          </div>
+            <div class="card-form backFace pokeCard" id='card1BckFace'>
+              <img class="pokeLogo" src="assets/images/PikPng.com_pokeball-png_1230309.png" alt="">
+            </div>
+          </div>  
         </div>
         <div id="columnCard2" class="col d-flex justify-content-center">
           <div class="card" id='card2' style="width: 12rem;">

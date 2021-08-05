@@ -16,7 +16,55 @@ body {
 
 /* Cards */
 
+.card {
+width: 120px;
+height: auto;
+}
+
+.card-form {
+    position: absolute;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+}
+
+.frontFace{
+    font-family: 'Press Start 2P', cursive;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+}
+
+.backFace {
+    background-color: red;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+}
+
+.card-title {
+    text-transform: capitalize;
+    font-size: 14px;
+}
+
+.card-text {
+    font-size: 14px;
+}
+
 .cardBorder {
     border: 3px solid rgba(255, 0, 0, 0.87);
     box-shadow: 5px 10px rgba(128, 128, 128, 0.562);
 }
+
+.pokeLogo {
+    width: 50px;
+    height: 50px;
+}
+
