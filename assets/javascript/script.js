@@ -5,16 +5,23 @@
 function start (event) {
     randomUrl();
     hoverCards();
-    flipCards();
+    // flipCards();
+    matchCards();
 }
 
 let btnStart = document.getElementById('btnStart');
 btnStart.addEventListener("click", start);
 
-/**Create a funciton restart which will trigger through an event listner
- * click on restart the game and start the functions from the start. 
+/**Function which reloads the page through event listner click in the button restart
  */
+function restart() {
+    window.location.reload();
+    setTimeout(start, 1000);
+ }
 
+
+let btnRestart = document.getElementById('btnRestart');
+btnRestart.addEventListener("click", restart);
 /**
  * Function randomize 10 id numbers and append this id numbers to urls in the 
  * format of API endpoint and insert through push into urlArray
@@ -47,7 +54,7 @@ function cardSelection () {
             });
         }));
         console.log(selectedPokeArray);
-        setTimeout(randomPokeArray, 1000);
+        setTimeout(randomPokeArray, 2000);
 }
 
 let selectedPokeArray =[];
@@ -79,23 +86,39 @@ function displayPokeInfo () {
 } 
 
 /**
- * Function which create a event lister click to flip the card from backface to 
- * frontFace through toggle backface class
+ * Function which create a event lister click to "flip" each card from 
+ * backface to frontFace through toggle backface class
  */
-function flipCards() {
-    function removeBackFace(event) {
-        this.classList.toggle('backFace');
-    }
+// function flipCards() {
+//     function removeBackFace(event) {
+//         // return this to toggle instead remove if my tests dosent works
+//         this.classList.toggle('backFace');
+//     }
 
-    let pokeCard = document.getElementsByClassName('pokeCard');
-    for (let i = 0; i < pokeCard.length; i++) {
-        pokeCard[i].addEventListener("click", removeBackFace);
-    }    
-}
+//     let pokeCard = document.getElementsByClassName('pokeCard');
+//     for (let i = 0; i < pokeCard.length; i++) {
+//         pokeCard[i].addEventListener("click", removeBackFace);
+//     }
+//     // matchCards ();    
+// }
+
+
+// function flipCards() {
+//     function removeBackFace(event) {
+//         // return this to toggle instead remove if my tests dosent works
+//         this.classList.remove('backFace');
+//     }
+
+//     let pokeCard = document.getElementsByClassName('pokeCard');
+//     for (let i = 0; i < pokeCard.length; i++) {
+//         pokeCard[i].addEventListener("click", removeBackFace);
+//     }
+//     // matchCards ();    
+// }
 
 /**
- * Function which create a event lister click on every card toggle class to add 
- * border and promote visual feedback  
+ * Function which create a event lister mouseover and mouseleave on every 
+ * card and then toggle a class which add border   
  */
 function hoverCards () {
     function addBorder(event) {
@@ -114,7 +137,65 @@ function hoverCards () {
     }    
 }
 
-// Replace click to hover to toggle border into eventListner and use click to flip the card 
+/**
+ * Function to match to equal cards
+ */
+ let lockBoard = false;
+ let flippedCard = false;
+ let firstCard, secondCard;
+ 
+ function matchCards () {
+     if (lockBoard) return;
+     if (this === firstCard) return;
+     let pokeCard = document.getElementsByClassName('pokeCard');
+ 
+     function removeBackFace(event) {
+         this.classList.remove('backFace');
+     }
+ 
+     function getPokeName (event) {
+         if (flippedCard === false) {
+             flippedCard = true;
+             firstCard = this;
+         } else {
+             flippedCard = false;
+             secondCard = this;
+         
+             if (firstCard.parentElement.getElementsByClassName('pokeName')[0].innerHTML === secondCard.parentElement.getElementsByClassName('pokeName')[0].innerHTML) {
+             console.log("Deu Match");
+                 if (lockBoard) return;
+                 firstCard.classList.remove('backFace');
+                 secondCard.classList.remove('backFace');
+                 firstCard.removeEventListener('click', removeBackFace);
+                 secondCard.removeEventListener('click', removeBackFace);
+                 // firstCard.removeEventListener('click', getPokeName);
+                 // secondCard.removeEventListener('click', getPokeName);
+                 resetBoard();
+              } else {
+                 lockBoard = true;
+                 
+                 console.log('Nao deu match');
+                 setTimeout(() => {
+                     firstCard.classList.add('backFace');
+                     secondCard.classList.add('backFace');
+ 
+                     resetBoard();
+                 }, 1000);   
+             }      
+         }
+     }
+ 
+ 
+     for (let i = 0; i < 20; i++) {
+         pokeCard[i].addEventListener("click", getPokeName);
+         pokeCard[i].addEventListener("click", removeBackFace);
+     }   
+ }
+ 
+ function resetBoard(params) {
+     [flippedCard, lockBoard] = [false, false];
+     [firstCard, secondCard] = [null, null];
+ }
 
 /**
  * function to count movements and increase one point for each two
@@ -124,3 +205,5 @@ function hoverCards () {
 // function to count and increade one of each two card selections right
 
 // Battle Mode!!!!!!
+
+
