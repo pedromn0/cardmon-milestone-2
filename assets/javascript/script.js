@@ -5,8 +5,9 @@
 function start (event) {
     randomUrl();
     hoverCards();
-    // flipCards();
     matchCards();
+    console.time('TotalTime');
+    this.removeEventListener("click",start);
 }
 
 let btnStart = document.getElementById('btnStart');
@@ -22,6 +23,7 @@ function restart() {
 
 let btnRestart = document.getElementById('btnRestart');
 btnRestart.addEventListener("click", restart);
+
 /**
  * Function randomize 10 id numbers and append this id numbers to urls in the 
  * format of API endpoint and insert through push into urlArray
@@ -64,11 +66,14 @@ let selectedPokeArray =[];
  * Function to shuffle the order of the pokemon objects inside the array 
  * selecedPokeArray
  */
-function randomPokeArray() {
+function randomPokeArray(event) {
     selectedPokeArray.sort(() => Math.random() - 0.5);
-     console.log(selectedPokeArray);
+     console.log('shuffled',selectedPokeArray);
      displayPokeInfo();
 }
+
+// let btnShuffle = document.getElementById('btnShuffle');
+// btnStart.addEventListener("click", randomPokeArray);
 
 /**
  * function to replace the html attributes of the 20 cards through the 
@@ -83,38 +88,7 @@ function displayPokeInfo () {
         sprites[i].setAttribute('src', selectedPokeArray[i].sprites);
         pokeType[i].innerHTML = selectedPokeArray[i].types;
     }
-} 
-
-/**
- * Function which create a event lister click to "flip" each card from 
- * backface to frontFace through toggle backface class
- */
-// function flipCards() {
-//     function removeBackFace(event) {
-//         // return this to toggle instead remove if my tests dosent works
-//         this.classList.toggle('backFace');
-//     }
-
-//     let pokeCard = document.getElementsByClassName('pokeCard');
-//     for (let i = 0; i < pokeCard.length; i++) {
-//         pokeCard[i].addEventListener("click", removeBackFace);
-//     }
-//     // matchCards ();    
-// }
-
-
-// function flipCards() {
-//     function removeBackFace(event) {
-//         // return this to toggle instead remove if my tests dosent works
-//         this.classList.remove('backFace');
-//     }
-
-//     let pokeCard = document.getElementsByClassName('pokeCard');
-//     for (let i = 0; i < pokeCard.length; i++) {
-//         pokeCard[i].addEventListener("click", removeBackFace);
-//     }
-//     // matchCards ();    
-// }
+}
 
 /**
  * Function which create a event lister mouseover and mouseleave on every 
@@ -169,18 +143,20 @@ function hoverCards () {
                  secondCard.classList.remove('backFace');
                  firstCard.removeEventListener('click', removeBackFace);
                  secondCard.removeEventListener('click', removeBackFace);
-                 // firstCard.removeEventListener('click', getPokeName);
-                 // secondCard.removeEventListener('click', getPokeName);
+                 firstCard.removeEventListener('click', getPokeName);
+                 secondCard.removeEventListener('click', getPokeName);
                  resetBoard();
+                 incrementScore();
               } else {
                  lockBoard = true;
                  
                  console.log('Nao deu match');
                  setTimeout(() => {
-                     firstCard.classList.add('backFace');
-                     secondCard.classList.add('backFace');
- 
-                     resetBoard();
+                    firstCard.classList.add('backFace');
+                    secondCard.classList.add('backFace');
+                    
+                    incrementWrongAnswer();
+                    resetBoard();
                  }, 1000);   
              }      
          }
@@ -199,11 +175,32 @@ function hoverCards () {
  }
 
 /**
- * function to count movements and increase one point for each two
- * selection wrong
+ * Function to increments the score every two
+ * right selection
+ */
+ function incrementScore() {
+
+    let oldScore = parseInt(document.getElementById("score").innerText);
+    document.getElementById("score").innerText = ++oldScore;
+    if (oldScore === 10) {
+        console.timeEnd('TotalTime');
+        alert('Hey congrats!! Do you want play again? Press Start', restart());
+    }
+}
+/**
+ * Function to increments every two wrong card selections
+ */
+function incrementWrongAnswer() {
+
+    let oldScore = parseInt(document.getElementById("incorrect").innerText);
+    document.getElementById("incorrect").innerText = ++oldScore;
+    console.log(oldScore);
+}
+
+/**
+ * Function to cronometrate the session
  */
 
-// function to count and increade one of each two card selections right
 
 // Battle Mode!!!!!!
 
