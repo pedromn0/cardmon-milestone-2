@@ -4,7 +4,7 @@
  */
  function start (event) {
     this.removeEventListener("click", start);
-    alert('Hi. Just 2 seconds. Ready?');
+    alert('Hello. Click ok and wait 2 seconds to loading...');
     randomUrl();
     hoverCards();
     matchCards();
@@ -183,7 +183,7 @@ function hoverCards () {
         console.timeEnd('TotalTime');
         alert('Hey congrats!! Do you want play again? Press Start', restart());
     } else {
-        setTimeout(()=>alert("Nicely done! all right next catch!"), 200);
+        setTimeout(()=>alert("Nicely done! Ready for your next catch!"), 200);
     }
 }
 /**

@@ -9,7 +9,7 @@ This project borned from my personal attraction for games such as Pokemon and my
 ## Table of Contents
 1. [UX](#UX)
     1. [User Stories](#user-stories)
-    1. [Framework](#framework)
+    1. [Wireframe](#wireframe)
 1. [Features](#features)
     1. [Existing Features](#existing-features)
     1. [Features Left To Implement](#features-left-to-implement)
@@ -26,22 +26,90 @@ This project borned from my personal attraction for games such as Pokemon and my
 
 ## UX
  
-Use this section to provide insight into your UX process, focusing on who this website is for, what it is that they want to achieve and how your project is the best way to help them achieve these things.
+The UX was idealized to be simple and not distractive, keeping the attention of the user to the functionality of the game. However, it is important to accommodate the functionality at the same time that the visuals maint the main idea of the application. After a search period and taking in consideration the user stories it was decided to borrow the palette's colors from the classic Game-boy, bringing a certain feeling of nostalgia and the connection with the main user of this application.
 
-In particular, as part of this section we recommend that you provide a list of User Stories, with the following general structure:
-- As a user type, I want to perform an action, so that I can achieve a goal.
+<p align="center">
+<img src="assets/images/gameboy.png" width="350" height="350">
+</p>
 
-This section is also where you would share links to any wireframes, mockups, diagrams etc. that you created as part of the design process. These files should themselves either be included as a pdf file in the project itself (in an separate directory), or just hosted elsewhere online and can be in any format that is viewable inside the browser.
+Embeded with this concept and the user stories was possible to formulate the framework.
 
 ### User Stories
 
+#### External user’s goal
+Have fun playing a memory card game themed with Pokemon within a iteractive interface. 
 
-### Framework
+#### Site owner's goal
+Make the game fun and simple by allowing everyone to play a visually satisfying experience.
 
+### Wireframe
+
+In result of the above, the concept of the game was created taking in consideration some research and the user stories. The wireframe keep things simple but add a simple touch of nostalgia trying to attach an attractiveness with the basic functionality of this game.
+
+The initial idea was to create the memory game and build on it another phase called battle mode, which is predefined in this wireframe. However, it was not possible to implement the bonus mode due to lack of time.
+
+The initial wireframe basically consist: 
+
+1. Navbar with three options - Home, Rules and About it.
+2. Button to select level and one to select the option yes or no for the battle mode afterwards.
+3. Three buttons to interact with major commands - Start, Restart and confirm selection.
+4. The grid with the 20 cards.
+5. At the end the score and the number of movements.
+
+Desktop Version
+<p align="center">
+<img src="assets/images/desktop.png" width="100%" height="450">
+</p>
+
+Tablet Version
+<p align="center">
+<img src="assets/images/tablet.png" width="100%" height="400">
+</p>
+
+Mobile Version
+<p align="center">
+<img src="assets/images/mobile.png" width="100%" height="400">
+</p>
 
 ## Features
 
-In this section, you should go over the different parts of your project, and describe each in a sentence or so.
+The initial suffered some changes becoming more simple to execute due the lack of time. Below all the functionalities and parts that were not possible to implement will be better explained.
+ 
+1. Navbar;
+
+2. Buttons for control;
+    
+3. Grid systems;
+
+4. The cards;
+
+5. Scores;
+    
+### Existing Features
+
+#### Navbar
+- The **Navbar** utilized came from bootstrap and was eddited in the visual to match the visual identity of the project. In this feature is possibleto find the links for home, rules and abou it. 
+
+#### Buttons for control
+- Those **buttons** will control those button the main actions of the game.
+    - The start will requeste the information from the api and prepare the cards.
+    - The restart button will refresh the page.
+    - The shuffle it is way to get more difficult mixing the cards more.
+
+#### Grid systems
+ - The **grid systems** was
+
+#### Cards
+ - In **cards** is 
+
+#### Scores
+ - The **scores** is
+
+#### Footer
+- **Footer** was developed to match the main visual aspects of the website and provide a link to website home and social links of the Xbox brand.
+
+### Features Left to Implement
+
  
 ### Existing Features
 - Feature 1 - allows users X to achieve Y, by having them fill out Z
@@ -56,11 +124,24 @@ In addition, you may also use this section to discuss plans for additional featu
 
 ## Technologies Used
 
-In this section, you should mention all of the languages, frameworks, libraries, and any other tools that you have used to construct this project. For each, provide its name, a link to its official site and a short sentence of why it was used.
+All the Technologies utilised to built this landing page can be found bellow with the respective links.
 
-- [JQuery](https://jquery.com)
-    - The project uses **JQuery** to simplify DOM manipulation.
+### Languages
+- [HTML](https://en.wikipedia.org/wiki/HTML) to build the whole structure of the landing page.
+- [CSS](https://en.wikipedia.org/wiki/CSS) to style all the webiste.
+- [JavaScript](https://en.wikipedia.org/wiki/JavaScript) to build the majority of the interactions and the logical for this game.
 
+### Frameworks and others
+
+- [Gitpod](https://www.gitpod.io/) as the code editor.
+- [Bootstrap 5.0](https://getbootstrap.com/docs/5.0/getting-started/introduction/) for all the core HTML sctrucutes as for buttons, navbar, grid system and helpers to deal with less unique CSS rules and more solutions pre built.
+- [Google Fonts](https://fonts.google.com/) for both fonts utilised in the project.
+- [Git](https://git-scm.com/) was used as tool to control the version of the project.
+- [Git Hub](https://github.com/) to store the project with versionament control
+- [Github pages](https://pages.github.com/) to deploy the live project.
+- [Balsamiq](https://balsamiq.com/) to wireframe the ideia of the website.
+- [Am I responsive](http://ami.responsivedesign.is/#) to help visualize the webiste in different screens sizes and get a print of it.
+- [PokeAPI](https://pokeapi.co/) was responsible for all the request about Pokemon utilised in the cards. 
 
 ## Testing
 

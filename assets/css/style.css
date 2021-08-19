@@ -39,7 +39,6 @@ body {
 
 .card {
 max-width: 200px;
-/* max-height: 200px; */
 }
 
 .card-form {
@@ -89,7 +88,7 @@ max-width: 200px;
 
 .cardBorder {
     border: 3px solid rgba(255, 0, 0, 0.87);
-    box-shadow: 5px 10px rgba(128, 128, 128, 0.562);
+    box-shadow: 2.5px 5px rgba(128, 128, 128, 0.562);
 }
 
 .pokeLogo {
