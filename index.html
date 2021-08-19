@@ -22,7 +22,7 @@
     <!-- Navbar Bootstrap -->
     <ul class="nav justify-content-center mt-1">
         <li class="nav-item nav-pills">
-          <a class="nav-link active" aria-current="#" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="rules.html">Rules</a>
@@ -39,7 +39,7 @@
     <div class="container buttonRow">
         <div class="row">
           <div class="col d-flex justify-content-center mt-4 mb-4">
-            <button type="button" id="btnStart" class="btn btn-success btn-lg">Start</button>
+            <button type="button" id="btnStart" class="btn btn-success btn-lg" >Start</button>
           </div>
           <div class="col d-flex justify-content-center mt-4 mb-4">
             <button type="button" id="btnRestart" class="btn btn-warning btn-lg">Restart</button>
@@ -56,9 +56,9 @@
           <div class="card" id='card1' style="width: 12rem;">
             <div class="frontFace">
               <img src="..." class="card-img-top sprites" alt="...">
-              <div class="card-body">
-                <h5 class="card-title pokeName d-none d-sm-inline">gloom</h5>
-                <p class="card-text pokeType d-none d-sm-inline">grass</p>
+              <div class="card-body d-none d-sm-inline">
+                <h5 class="card-title pokeName">gloom</h5>
+                <p class="card-text pokeType">grass</p>
               </div>
             </div>
             <div class="card-form backFace pokeCard" id='card1BckFace'>
@@ -305,7 +305,7 @@
           </div>  
         </div>
         <div id="columnCard19" class="col d-flex justify-content-center mb-3">
-          <div class="card" id='card1' style="width: 12rem;">
+          <div class="card" id='card19' style="width: 12rem;">
             <div class="frontFace">
               <img src="..." class="card-img-top sprites" alt="...">
               <div class="card-body">
@@ -319,7 +319,7 @@
           </div>  
         </div>
         <div id="columnCard20" class="col d-flex justify-content-center mb-3">
-          <div class="card" id='card1' style="width: 12rem;">
+          <div class="card" id='card20' style="width: 12rem;">
             <div class="frontFace">
               <img src="..." class="card-img-top sprites" alt="...">
               <div class="card-body">
@@ -337,8 +337,8 @@
     <!-- Footer Score -->
     <footer class="mt-4 d-flex justify-content-center">
       <div class="d-inline-flex">
-        <h5 class="score">Total Score: <span id="score">0</span></h3>
-        <h5 class="score">Movements: <span id="incorrect">0</span></h3>
+        <h5 class="score">Total Score: <span id="score">0</span></h5>
+        <h5 class="score">Movements: <span id="incorrect">0</span></h5>
       </div>  
     </footer>
 

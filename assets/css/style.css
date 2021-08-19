@@ -28,8 +28,8 @@ body {
 /* Cards */
 
 .card {
-width: 120px;
-max-height: 100px auto;
+max-width: 200px;
+max-height: 200px;
 }
 
 .card-form {

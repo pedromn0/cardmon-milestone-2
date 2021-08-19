@@ -2,7 +2,7 @@
  * Function start the game run randomUrl and cardSelection after an 
  * eventlistner click on the button start.
  */
-function start (event) {
+ function start (event) {
     randomUrl();
     hoverCards();
     matchCards();
@@ -17,7 +17,6 @@ btnStart.addEventListener("click", start);
  */
 function restart() {
     window.location.reload();
-    setTimeout(start, 1000);
  }
 
 
@@ -35,7 +34,7 @@ function randomUrl () {
     }
     idArray.forEach(id => urlArray.push(`https://pokeapi.co/api/v2/pokemon/${id}`));
     idArray.forEach(id => urlArray.push(`https://pokeapi.co/api/v2/pokemon/${id}`));
-    cardSelection();
+    setTimeout(cardSelection, 300);
 }
 
 let urlArray=[];
@@ -56,6 +55,7 @@ function cardSelection () {
             });
         }));
         console.log(selectedPokeArray);
+        // setTimeout(randomPokeArray, 2000);
         setTimeout(randomPokeArray, 2000);
 }
 
@@ -69,11 +69,11 @@ let selectedPokeArray =[];
 function randomPokeArray(event) {
     selectedPokeArray.sort(() => Math.random() - 0.5);
      console.log('shuffled',selectedPokeArray);
-     displayPokeInfo();
+     setTimeout(displayPokeInfo, 200);
 }
 
-// let btnShuffle = document.getElementById('btnShuffle');
-// btnStart.addEventListener("click", randomPokeArray);
+let btnShuffle = document.getElementById('btnShuffle');
+btnShuffle.addEventListener("click", randomPokeArray);
 
 /**
  * function to replace the html attributes of the 20 cards through the 
@@ -115,63 +115,60 @@ function hoverCards () {
 /**
  * Function to match to equal cards
  */
- let lockBoard = false;
  let flippedCard = false;
+ let lockBoard = false;
  let firstCard, secondCard;
  
- function matchCards () {
+  function matchCards (event) {
      if (lockBoard) return;
      if (this === firstCard) return;
-     let pokeCard = document.getElementsByClassName('pokeCard');
- 
-     function removeBackFace(event) {
-         this.classList.remove('backFace');
+     
+     this.classList.remove('backFace');
+    
+     if (!flippedCard) {
+         flippedCard = true;
+         firstCard = this;
+         return;
      }
  
-     function getPokeName (event) {
-         if (flippedCard === false) {
-             flippedCard = true;
-             firstCard = this;
-         } else {
-             flippedCard = false;
-             secondCard = this;
-         
-             if (firstCard.parentElement.getElementsByClassName('pokeName')[0].innerHTML === secondCard.parentElement.getElementsByClassName('pokeName')[0].innerHTML) {
-             console.log("Deu Match");
-                 if (lockBoard) return;
-                 firstCard.classList.remove('backFace');
-                 secondCard.classList.remove('backFace');
-                 firstCard.removeEventListener('click', removeBackFace);
-                 secondCard.removeEventListener('click', removeBackFace);
-                 firstCard.removeEventListener('click', getPokeName);
-                 secondCard.removeEventListener('click', getPokeName);
-                 resetBoard();
-                 incrementScore();
-              } else {
-                 lockBoard = true;
-                 
-                 console.log('Nao deu match');
-                 setTimeout(() => {
-                    firstCard.classList.add('backFace');
-                    secondCard.classList.add('backFace');
-                    
-                    incrementWrongAnswer();
-                    resetBoard();
-                 }, 1000);   
-             }      
-         }
-     }
+     secondCard = this;
+     flippedCard = false;
+             
+     checkForMatch(firstCard, secondCard);
+ }
+     
+ function checkForMatch(firstCard, secondCard) {
+     let isMatch = firstCard.parentElement.getElementsByClassName('pokeName')[0].innerHTML === secondCard.parentElement.getElementsByClassName('pokeName')[0].innerHTML;
+         isMatch ? disableCards(firstCard, secondCard) : unflipCards(firstCard, secondCard);
+ }
+     
+ function disableCards () {
+     firstCard.removeEventListener('click', matchCards);
+     secondCard.removeEventListener('click', matchCards);
  
- 
-     for (let i = 0; i < 20; i++) {
-         pokeCard[i].addEventListener("click", getPokeName);
-         pokeCard[i].addEventListener("click", removeBackFace);
-     }   
+     incrementScore();
+     resetBoard();
  }
  
- function resetBoard(params) {
-     [flippedCard, lockBoard] = [false, false];
-     [firstCard, secondCard] = [null, null];
+ function unflipCards () {
+     setTimeout(() => {
+         firstCard.classList.add('backFace');
+         secondCard.classList.add('backFace');
+ 
+         incrementWrongAnswer();
+         resetBoard();
+         }, 1000);
+ }
+  
+ function resetBoard() {
+      [flippedCard, lockBoard] = [false, false];
+      [firstCard, secondCard] = [null, null];
+ }
+ 
+ let pokeCards = document.getElementsByClassName('pokeCard');
+ 
+ for (let i = 0; i < 20; i++) {
+     pokeCards[i].addEventListener("click", matchCards);
  }
 
 /**
@@ -194,7 +191,6 @@ function incrementWrongAnswer() {
 
     let oldScore = parseInt(document.getElementById("incorrect").innerText);
     document.getElementById("incorrect").innerText = ++oldScore;
-    console.log(oldScore);
 }
 
 /**
@@ -203,5 +199,3 @@ function incrementWrongAnswer() {
 
 
 // Battle Mode!!!!!!
-
-
