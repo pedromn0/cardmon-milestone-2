@@ -1,5 +1,11 @@
 /* Spacing and general adjusts */
 
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #fff;
+    background-color: #28329e;
+    font-family: sans-serif;
+}
+
 .score {
     margin-left: 30px;
     margin-right: 30px;
@@ -11,11 +17,15 @@
 }
 
 body {
-    background-color: #e6dfdf8c;
+    background-color: #e6ddd8;
 }
 
 .game-title {
     font-family: 'Press Start 2P', cursive;
+}
+
+.nav-link {
+    color: #28329e;
 }
 
 /* Grid */
@@ -29,7 +39,7 @@ body {
 
 .card {
 max-width: 200px;
-max-height: 200px;
+/* max-height: 200px; */
 }
 
 .card-form {
@@ -50,6 +60,13 @@ max-height: 200px;
     background-color: #fff;
 }
 
+.circle {
+    background: #bdae58;
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+    border-radius: 100px;
+}
+
 .backFace {
     background-color: red;
     position: absolute;
@@ -62,11 +79,12 @@ max-height: 200px;
 
 .card-title {
     text-transform: capitalize;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .card-text {
-    font-size: 14px;
+    text-transform: capitalize;
+    font-size: 10px;
 }
 
 .cardBorder {
@@ -75,7 +93,25 @@ max-height: 200px;
 }
 
 .pokeLogo {
-    width: 50px;
-    height: 50px;
+    width: 25px;
+    height: 25px;
+    margin-left: 44%;
+    margin-top: 0%;
 }
 
+.score {
+    color: #28329e;
+}
+
+.sprites {
+    height: 100px;
+    width: 100px;
+    margin-left: 20%;
+    margin-top: 20%;
+}
+
+/* Buttons */
+
+.btn-purple {
+    background-color: #a93671;
+}

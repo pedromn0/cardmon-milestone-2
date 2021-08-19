@@ -18,6 +18,7 @@ This project borned from my personal attraction for games such as Pokemon and my
 1. [Testing](#testing)
     1. [Notable Bugs](#notable-bugs)
 1. [Deployment](#deployment)
+    1. [Making a Local Clone](#making-a-local-clone)
 1. [Credits](#credits)
     1. [Content](#content)
     2. [Media](#media)
@@ -96,6 +97,15 @@ For deploy this project I utilised some of the mentioned technologies above to f
 8. In the link it was necessary went to option **source** and selected the main branch
 9. After that I clicked on the button **save**.
 10. Finally after those steps the link of the webiste was ready to be utilised and the project is live.
+
+### Making a Local Clone
+
+1. Log in to your [GitHub](https://github.com/), locate the repository [pedromn0/cardmon-milestone-2](https://github.com/pedromn0/cardmon-milestone-2).
+2. Inside the repository locate the button Code and then click on "Clone or download".
+3. To clone the repository using HTTPS, under "Clone with HTTPS", copy the link.
+4. In your terminal open Git Bash
+5. Then you can change the current working directory to a directory that suits you in your computer.
+6. Type `git clone`, and then paste the URL you copied earlier.
 
 ## Credits
 

@@ -3,11 +3,12 @@
  * eventlistner click on the button start.
  */
  function start (event) {
+    this.removeEventListener("click", start);
+    alert('Hi. Just 2 seconds. Ready?');
     randomUrl();
     hoverCards();
     matchCards();
     console.time('TotalTime');
-    this.removeEventListener("click",start);
 }
 
 let btnStart = document.getElementById('btnStart');
@@ -18,7 +19,6 @@ btnStart.addEventListener("click", start);
 function restart() {
     window.location.reload();
  }
-
 
 let btnRestart = document.getElementById('btnRestart');
 btnRestart.addEventListener("click", restart);
@@ -73,7 +73,7 @@ function randomPokeArray(event) {
 }
 
 let btnShuffle = document.getElementById('btnShuffle');
-btnShuffle.addEventListener("click", randomPokeArray);
+btnShuffle.addEventListener("click", randomPokeArray,randomPokeArray);
 
 /**
  * function to replace the html attributes of the 20 cards through the 
@@ -157,7 +157,7 @@ function hoverCards () {
  
          incrementWrongAnswer();
          resetBoard();
-         }, 1000);
+         }, 1200);
  }
   
  function resetBoard() {
@@ -182,6 +182,8 @@ function hoverCards () {
     if (oldScore === 10) {
         console.timeEnd('TotalTime');
         alert('Hey congrats!! Do you want play again? Press Start', restart());
+    } else {
+        setTimeout(()=>alert("Nicely done! all right next catch!"), 200);
     }
 }
 /**
@@ -194,7 +196,7 @@ function incrementWrongAnswer() {
 }
 
 /**
- * Function to cronometrate the session
+ * Function to hide pokelogo
  */
 
 
