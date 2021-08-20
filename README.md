@@ -1,4 +1,7 @@
 # Cardmon Memory Game
+<img src="assets/images/responsiveness.png" width="100%">
+
+[Live project link](https://pedromn0.github.io/cardmon-milestone-2/)
 
 The idea of this project is to practice the knowledge learned so far about the interactive frontend module of the Code Institute software development course.
  
@@ -58,22 +61,22 @@ The initial wireframe basically consist:
 
 Desktop Version
 <p align="center">
-<img src="assets/images/desktop.png" width="100%" height="450">
+<img src="assets/images/desktop.png" width="90%" height="450">
 </p>
 
 Tablet Version
 <p align="center">
-<img src="assets/images/tablet.png" width="100%" height="400">
+<img src="assets/images/tablet.png" width="90%" height="400">
 </p>
 
 Mobile Version
 <p align="center">
-<img src="assets/images/mobile.png" width="100%" height="400">
+<img src="assets/images/mobile.png" width="90%" height="400">
 </p>
 
 ## Features
 
-The initial suffered some changes becoming more simple to execute due the lack of time. Below all the functionalities and parts that were not possible to implement will be better explained.
+The initial design suffered some changes becoming more simple to execute due the lack of time. Below all the functionalities and parts that were not possible to implement will be better explained.
  
 1. Navbar;
 
@@ -88,30 +91,31 @@ The initial suffered some changes becoming more simple to execute due the lack o
 ### Existing Features
 
 #### Navbar
-- The **Navbar** utilized came from bootstrap and was eddited in the visual to match the visual identity of the project. In this feature is possibleto find the links for home, rules and abou it. 
+- The **Navbar** utilized came from bootstrap and was eddited in the visual to match the visual identity of the project. This feature allows the user reach links for home, rules and abou it.
 
-#### Buttons for control
-- Those **buttons** will control those button the main actions of the game.
-    - The start will requeste the information from the api and prepare the cards.
-    - The restart button will refresh the page.
-    - The shuffle it is way to get more difficult mixing the cards more.
+    - The **Rules** is a page to explain the simple rules of this game.
+
+    - The **About it** it is a briefly explanation of the concept of this project and a link to the github repository.  
+
+    - Those **buttons** will give the control of the game.
+        - Clicking on the start will begins the flow of funcitons from request the Pokemon informations with the API until manipulate the DOM and display the cards.
+        - Clicking on restart button will refresh the page and start all over.
+        - Clicking the shuffle button will give a better mix on the cards to guarantee more difficult.
 
 #### Grid systems
- - The **grid systems** was
+ - The **grid systems** came from the bootstrap to ease the structural part leaving more time for the functional part of the game. The collumns and rows were utilised to comprehend more cards into the same display resulting in 5 cards per row in bigger screens where this game was conceived to be played.
 
 #### Cards
- - In **cards** is 
+ - The **cards** utilised came from bootstrap as well but they were heavily personalised to fit the project criteria’s. Each card is composed for different HTML elements such as:
+    - frontFace container in which is contained the image or sprite from Pokemon API.
+    - card-body container in which is contained one "h5" tag for the Pokemon name and an "p" tag for the type of the Pokemon request from the API.
+    - backface container which is the red part of the card which it is removed after clicking on it.    
 
 #### Scores
- - The **scores** is
+ - The **scores** works to countability the number of wrong moves and the number of paired cards found.
+    - **Pairs found** increments every two correct cards found by the user at the maximum of 10 because the total of cards are 20.
+    - **Movements** increments every two incorrect selection to this score. The less the better.
 
-#### Footer
-- **Footer** was developed to match the main visual aspects of the website and provide a link to website home and social links of the Xbox brand.
-
-### Features Left to Implement
-
- 
-### Existing Features
 - Feature 1 - allows users X to achieve Y, by having them fill out Z
 - ...
 
@@ -164,6 +168,9 @@ You should also mention in this section any interesting bugs or problems you dis
 
 If this section grows too long, you may want to split it off into a separate file and link to it from here.
 
+#### Shuffle
+It was made trough a button instead a=of being part of the flow of function because was not possible to make the shuffle functions works in sequence just after all runs.
+
 ## Deployment
 
 For deploy this project I utilised some of the mentioned technologies above to facilated this process.
@@ -189,6 +196,16 @@ For deploy this project I utilised some of the mentioned technologies above to f
 6. Type `git clone`, and then paste the URL you copied earlier.
 
 ## Credits
+
+All the images of pokemon and information utilised for this project were from [PokeAPI](https://pokeapi.co/).
+
+The Pokeball image utilised called [pokeLogo](https://www.pikpng.com/pngvi/xxRxTm_brik-pixel-art-pokemon-pokeball-clipart/) in the project came from this website https://www.pikpng.com/ 
+
+A significant part of the logical and attempt to block the board of the game came from this project from **Marina Ferreira** and can be accessed from [here](https://marina-ferreira.github.io/tutorials/js/memory-game/). This code was edited and adapted to meet my project criteria.
+
+The function responsible to fetch information from API, organize in objects then insert those objects in arrays had inspiration from [this video](https://www.youtube.com/watch?v=T-VQUKeSU1w) but the code had to be edited to works in accordance with my project criteria. The author of the original code is **James Q Quick**.
+
+The button shuffle contains an function called ramdomPokeArray that was inspired but edited from this [source](https://flaviocopes.com/how-to-shuffle-array-javascript/) from **Flavio Copes**.
 
 ### Content
 - The text for section Y was copied from the [Wikipedia article Z](https://en.wikipedia.org/wiki/Z)

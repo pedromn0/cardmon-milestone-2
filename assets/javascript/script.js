@@ -54,9 +54,8 @@ function cardSelection () {
                 types: data.types.map(type =>type.type.name)
             });
         }));
-        console.log(selectedPokeArray);
-        // setTimeout(randomPokeArray, 2000);
         setTimeout(randomPokeArray, 2000);
+        return selectedPokeArray;
 }
 
 let selectedPokeArray =[];
@@ -108,7 +107,7 @@ function hoverCards () {
     for (let i = 0; i < cards.length; i++) {
         cards[i].addEventListener("mouseover", addBorder);
         cards[i].addEventListener("mouseleave", removeBorder);
-    }    
+    }  
 }
 
 // Code inspired by this video Tutorial https://www.youtube.com/watch?v=ZniVgo8U7ek but edited by myself to reach my project settings
@@ -198,6 +197,5 @@ function incrementWrongAnswer() {
 /**
  * Function to hide pokelogo
  */
-
 
 // Battle Mode!!!!!!
