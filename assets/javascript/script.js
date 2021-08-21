@@ -7,7 +7,6 @@
     alert('Hello. Click ok and wait 2 seconds to loading...');
     randomUrl();
     hoverCards();
-    matchCards();
     console.time('TotalTime');
 }
 
@@ -67,7 +66,6 @@ let selectedPokeArray =[];
  */
 function randomPokeArray(event) {
     selectedPokeArray.sort(() => Math.random() - 0.5);
-     console.log('shuffled',selectedPokeArray);
      setTimeout(displayPokeInfo, 200);
 }
 
@@ -96,7 +94,6 @@ function displayPokeInfo () {
 function hoverCards () {
     function addBorder(event) {
         this.classList.toggle('cardBorder');
-        // console.log('clicked');
     }
 
     function removeBorder(event) {
@@ -121,8 +118,9 @@ function hoverCards () {
   function matchCards (event) {
      if (lockBoard) return;
      if (this === firstCard) return;
-     
-     this.classList.remove('backFace');
+
+    this.classList.remove('backFace');
+        
     
      if (!flippedCard) {
          flippedCard = true;
@@ -131,7 +129,7 @@ function hoverCards () {
      }
  
      secondCard = this;
-     flippedCard = false;
+    lockBoard = true;
              
      checkForMatch(firstCard, secondCard);
  }
@@ -158,17 +156,17 @@ function hoverCards () {
          resetBoard();
          }, 1200);
  }
-  
- function resetBoard() {
-      [flippedCard, lockBoard] = [false, false];
-      [firstCard, secondCard] = [null, null];
- }
  
  let pokeCards = document.getElementsByClassName('pokeCard');
  
  for (let i = 0; i < 20; i++) {
      pokeCards[i].addEventListener("click", matchCards);
  }
+
+ function resetBoard() {
+    [flippedCard, lockBoard] = [false, false];
+    [firstCard, secondCard] = [null, null];
+}
 
 /**
  * Function to increments the score every two
@@ -193,9 +191,3 @@ function incrementWrongAnswer() {
     let oldScore = parseInt(document.getElementById("incorrect").innerText);
     document.getElementById("incorrect").innerText = ++oldScore;
 }
-
-/**
- * Function to hide pokelogo
- */
-
-// Battle Mode!!!!!!
