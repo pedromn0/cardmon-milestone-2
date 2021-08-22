@@ -7,7 +7,6 @@
     alert('Hello. Click ok and wait 2 seconds to loading...');
     randomUrl();
     hoverCards();
-    console.time('TotalTime');
 }
 
 let btnStart = document.getElementById('btnStart');
@@ -189,7 +188,6 @@ function hoverCards () {
     let oldScore = parseInt(document.getElementById("score").innerText);
     document.getElementById("score").innerText = ++oldScore;
     if (oldScore === 10) {
-        console.timeEnd('TotalTime');
         alert('Hey congrats!! Do you want play again? Press Start', restart());
     } else {
         setTimeout(()=>alert("Nicely done! Ready for your next catch!"), 200);
