@@ -119,7 +119,7 @@ function hoverCards () {
 
 // Code inspired by this video Tutorial https://www.youtube.com/watch?v=ZniVgo8U7ek but edited by myself to reach my project settings
 /**
- * Function to match to equal cards
+ * Function to chekc if the two cards clicked matches and give flip to cards
  */
  let flippedCard = false;
  let lockBoard = false;

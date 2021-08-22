@@ -17,9 +17,11 @@ This project borned from my personal attraction for games such as Pokemon and my
     1. [Existing Features](#existing-features)
     1. [Features Left To Implement](#features-left-to-implement)
 1. [Technologies Used](#technologies-used)
-1. [Responsiveness of Pages](#responsiveness-of-pages)
 1. [Testing](#testing)
-    1. [Notable Bugs](#notable-bugs)
+    1. [Mannual Tests and Notable Bugs](#mannual-tests-and-notable-bugs)
+        - [More than three clicks](#more-than-three-clicks)
+        - [Shuffle at any time](#shuffle-at-any-time)
+    1. [Responsiveness](#responsiveness)
 1. [Deployment](#deployment)
     1. [Making a Local Clone](#making-a-local-clone)
 1. [Credits](#credits)
@@ -142,27 +144,138 @@ All the Technologies utilised to built this landing page can be found bellow wit
 
 ## Testing
 
-In this section, you need to convince the assessor that you have conducted enough testing to legitimately believe that the site works well. Essentially, in this part you will want to go over all of your user stories from the UX section and ensure that they all work as intended, with the project providing an easy and straightforward way for the users to achieve their goals.
+The automated test utilised were [Google Lighthouse](https://developers.google.com/web/tools/lighthouse) to test general performance, [W3C Markup](https://validator.w3.org/nu/) validation service for the find any inconsistency in the HTML and  [W3C Jigsaw CSS](https://jigsaw.w3.org/css-validator/#validate_by_input) validation service for CSS and [Jshin](https://jshint.com/) for JavaScript.
 
-Whenever it is feasible, prefer to automate your tests, and if you've done so, provide a brief explanation of your approach, link to the test file(s) and explain how to run them.
+All the possible erros founded by W3C validators were corrected less those ones being part of bootstrap Frameworks. The same can be said by the Jshin valitadion where there were no errors being displayed.
 
-For any scenarios that have not been automated, test the user stories manually and provide as much detail as is relevant. A particularly useful form for describing your testing process is via scenarios, such as:
+All the results can be seeing below.
 
-1. Contact form:
-    1. Go to the "Contact Us" page
-    2. Try to submit the empty form and verify that an error message about the required fields appears
-    3. Try to submit the form with an invalid email address and verify that a relevant error message appears
-    4. Try to submit the form with all inputs valid and verify that a success message appears.
+Google Lighthouse results:
+<p align="center">
+<img src="assets/images/tests/lightHouse_checker_result.png" width="90%" height="auto">
+</p>
 
-In addition, you should mention in this section how your project looks and works on different browsers and screen sizes.
+W3C Markup for index.html results:
+<p align="center">
+<img src="assets/images/tests/index_checker_result.png" width="90%" height="auto">
+</p>
 
-### Notable Bugs
-You should also mention in this section any interesting bugs or problems you discovered during your testing, even if you haven't addressed them yet.
+W3C Markup for rules.html results:
+<p align="center">
+<img src="assets/images/tests/rules_checker_result.png" width="90%" height="auto">
+</p>
 
-If this section grows too long, you may want to split it off into a separate file and link to it from here.
+W3C Markup for about.html results:
+<p align="center">
+<img src="assets/images/tests/about_checker_result.png" width="90%" height="auto">
+</p>
 
-#### Shuffle
-It was made trough a button instead a=of being part of the flow of function because was not possible to make the shuffle functions works in sequence just after all runs.
+W3C Jigsaw CSS for style.css results:
+<p align="center">
+<img src="assets/images/tests/css_checker_result.png" width="90%" height="auto">
+</p>
+
+Jshin for script.js results:
+<p align="center">
+<img src="assets/images/tests/javascript_checker_result.png" width="90%" height="auto">
+</p>
+
+### Mannual Tests and Notable Bugs
+The website was manually tested to check if it was working properly. After success attempts I can confirm in the best of my capabilities that the website is working as initially was intend. 
+
+#### More than three clicks
+The game provides the capacity to interact with the user through clicking on the cards revealing their content and then checking the value of the cards. If the chosen one is right then will increment one point in the score, but if the selection was wrong the increment will happen in the movements indicating that this selection was wrong. Other than that if the selection was right the user will receive the visual feedback of the cards maintained it revealed, otherwise those cards will be hidden again indicating for the user that they need to try again.
+
+1. All that was tested following the regular flow:
+   1. Start the game
+   2. Wait two seconds for all cards being loaded
+   3. Click on two whised cards and then wait for the visual feedback and increment on the scores or movements.
+ 
+One error found during these tests and already addressed was related to the capacity of the user clicks three or more cards. In that way the logic of the game would be broken resulting in a wrong incrementation of the scores and revealing more than two cards which is not allowed.
+ 
+To solve that was utilised an logic to give boolean value for a global variable called **lockBoard** of false. In the first if statement it is checked if this is true and the function will return and stop the sequence to go on revealing more cards. If the value is false it will go on and at the end of this function will replace the value of **lockBoard** to true for the cycle of checks could happen again.
+
+```
+function matchCards (event) {
+     if (lockBoard) return;
+     if (this === firstCard) return;
+
+    this.classList.remove('backFace');
+        
+    
+     if (!flippedCard) {
+         flippedCard = true;
+         firstCard = this;
+         return;
+     }
+ 
+     secondCard = this;
+    lockBoard = true;
+             
+     checkForMatch(firstCard, secondCard);
+ }
+```
+This segment of logic goes on and at the very end where all the variable values were reinstated to the initial states trough the function **resetBoard** to makes the whole sequece works again.
+
+```
+function resetBoard() {
+    [flippedCard, lockBoard] = [false, false];
+    [firstCard, secondCard] = [null, null];
+} 
+```
+
+#### Shuffle at any time
+
+Another test being executed was to guarantee once more that the logic of the game would not be broken. In this case it is related to the shuffle button that remixes the pokemon array of objects coming from the API through the fetching. This is a feature to guarantee a better mix.
+
+```
+function randomPokeArray(event) {
+    selectedPokeArray.sort(() => Math.random() - 0.5);
+     setTimeout(displayPokeInfo, 200);
+}
+
+let btnShuffle = document.getElementById('btnShuffle');
+btnShuffle.addEventListener("click", randomPokeArray,randomPokeArray);
+```
+
+2. The test consisted in
+   1. Start the game
+   2. Wait two seconds for all cards being loaded
+   3. After that click on the shuffle button.
+
+That made me realize that I was guaranteeing to the user the possibility to change the order of the cards at any time of the game, even after the matching of pairs. That in this case would be breaking the game of increment points for cards that could not be the same any more because the shuffle will make that cards change information and not the position. In this case was possible to for example have a pair of charizard and then click on shuffle and that two cards being displayed as Squirtle and bulbasaur for example.
+
+To avoid that the solution was creat a check attached to the event listener click that would be analysing how many pairs were found through the element where the increment of pair were registered and then being more than 0 the function itself called **disabledBtnShuffle** would be disabling the shuffle button.
+
+```
+function enableBtnShuffle(event) {
+    btnShuffle.removeAttribute("disabled", "");
+}
+
+function disabledBtnShuffle (event) {
+    if (parseInt(document.getElementById("score").innerText) > 0){
+        btnShuffle.setAttribute("disabled", "")
+    }
+}
+```
+
+Following the same and avoid the shuffle button being displayed before the game could run a similar logic was created. It was given to the html of the button to shuffle the attribute disabled. With that and after listening a event on the button start the function ***enableBtnShuffle** will remove that attribute enabling the button.
+
+```
+function enableBtnShuffle(event) {
+    btnShuffle.removeAttribute("disabled", "");
+}
+```
+
+Those two sequences of logic give the button the appropriate functionality to allow the function shuffle just happens up to the moment that the user finds the first pair of cards.
+
+This game or website does not provide any console error because all of them were corrected before the submission.
+
+### Responsiveness
+
+This project was developed to work majority in bigger screens due to the nature of the game. It is memory game that in essence requires a bigger screen to guarantee a better experience to the user. However the project is responsive to all screens adapting the number of cards as better as possible, but the best experience will be achive on desktop and tablets.
+
+As explained this project will work fine in at least 3 different sizes Desktop,Tablet and mobile. To achive this the website has been tested on several possible devices, from 11 "or 13" inch Macs, Google Chrome developer tools, variable Android phones of friends and relatives.
 
 ## Deployment
 
@@ -192,8 +305,6 @@ For deploy this project I utilised some of the mentioned technologies above to f
 
 All the images of pokemon and information utilised for this project were from [PokeAPI](https://pokeapi.co/).
 
-The Pokeball image utilised called [pokeLogo](https://www.pikpng.com/pngvi/xxRxTm_brik-pixel-art-pokemon-pokeball-clipart/) in the project came from this website https://www.pikpng.com/ 
-
 A significant part of the logical and attempt to block the board of the game came from this project from **Marina Ferreira** and can be accessed from [here](https://marina-ferreira.github.io/tutorials/js/memory-game/). This code was edited and adapted to meet my project criteria.
 
 The function responsible to fetch information from API, organize in objects then insert those objects in arrays had inspiration from [this video](https://www.youtube.com/watch?v=T-VQUKeSU1w) but the code had to be edited to works in accordance with my project criteria. The author of the original code is **James Q Quick**.
@@ -206,6 +317,8 @@ The button shuffle contains an function called ramdomPokeArray that was inspired
 ### Media
 - The images from all Pokemon come from [PokeAPI](https://pokeapi.co/).
 
+- The Pokeball image utilised called [pokeLogo](https://www.pikpng.com/pngvi/xxRxTm_brik-pixel-art-pokemon-pokeball-clipart/) in the project came from this website https://www.pikpng.com/
+
 ### Acknowledgements
 
-- I received inspiration for this project from X
+- The inspirations for this project was no special game or website to be mentioned here but all memory cards games already played by me.
