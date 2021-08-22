@@ -8,11 +8,18 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <!-- CSS sheet -->
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Cardmon Rules</title>
   </head>
   <body>
-    <ul class="nav justify-content-center mt-1">
+    <!-- Navbar Bootstrap -->
+    <ul class="nav justify-content-center mt-1 mb-4">
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="index.html">Home</a>
         </li>
@@ -23,10 +30,27 @@
           <a class="nav-link" href="about.html">About it</a>
         </li>
     </ul>
-    <h1 class="text-center mt-4">Rules</h1>
-
     
+    <!-- Rules Header -->
+    <header>
+      <h1 class="text-center game-title mt-4">Cardmon Rules</h1>
+    </header>
 
+    <!-- Rules Container -->
+    <div class="container-md mt-4 rules">
+      <div class="row cols-sm-12 cols-md-5">
+        <div id="columnCard1" class="col d-flex justify-content-center mb-3">
+          <article>
+            <ol>
+              <li>The objective is to collect all the 10 pairs of cards.</li>
+              <li>All movements are count so try to finishes with less movements.</li>
+              <li>Do you want it more challenging? Use the shuffle button after the game loads. This will keep things more challenging.</li>
+            </ol>
+          </article>
+        </div>  
+      </div>
+    </div>
+    
     <!-- Bootstrap JS -->
     
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>

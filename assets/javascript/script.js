@@ -12,6 +12,7 @@
 
 let btnStart = document.getElementById('btnStart');
 btnStart.addEventListener("click", start);
+btnStart.addEventListener("click", enableBtnShuffle);
 
 /**Function which reloads the page through event listner click in the button restart
  */
@@ -71,6 +72,16 @@ function randomPokeArray(event) {
 
 let btnShuffle = document.getElementById('btnShuffle');
 btnShuffle.addEventListener("click", randomPokeArray,randomPokeArray);
+
+function enableBtnShuffle(event) {
+    btnShuffle.removeAttribute("disabled", "");
+}
+
+function disabledBtnShuffle (event) {
+    if (parseInt(document.getElementById("score").innerText) > 0){
+        btnShuffle.setAttribute("disabled", "")
+    }
+}
 
 /**
  * function to replace the html attributes of the 20 cards through the 
@@ -161,6 +172,7 @@ function hoverCards () {
  
  for (let i = 0; i < 20; i++) {
      pokeCards[i].addEventListener("click", matchCards);
+     pokeCards[i].addEventListener("click", disabledBtnShuffle);
  }
 
  function resetBoard() {

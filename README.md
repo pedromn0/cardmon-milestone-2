@@ -10,7 +10,7 @@ In this module was presented the javascript main aspects, exercises and at the e
 This project borned from my personal attraction for games such as Pokemon and my curiosity to understand a bit more of how they are made. Also I decided to build this memory game utilising Pokemon API and just vanilla javascript. In that way I practise how to interact with API and how to construct the logic of this game practising the fundamental parts of javascript as the interaction with array and objects, manipulation of the DOM, event listers and some lops.
  
 ## Table of Contents
-1. [UX](#UX)
+1. [UX](#ux)
     1. [User Stories](#user-stories)
     1. [Wireframe](#wireframe)
 1. [Features](#features)
@@ -61,22 +61,22 @@ The initial wireframe basically consist:
 
 Desktop Version
 <p align="center">
-<img src="assets/images/desktop.png" width="90%" height="450">
+<img src="assets/images/desktop.png" width="90%" height="auto">
 </p>
 
 Tablet Version
 <p align="center">
-<img src="assets/images/tablet.png" width="90%" height="400">
+<img src="assets/images/tablet.png" width="90%" height="auto">
 </p>
 
 Mobile Version
 <p align="center">
-<img src="assets/images/mobile.png" width="90%" height="400">
+<img src="assets/images/mobile.png" width="90%" height="auto">
 </p>
 
 ## Features
 
-The initial design suffered some changes becoming more simple to execute due the lack of time. Below all the functionalities and parts that were not possible to implement will be better explained.
+The initial design suffered some changes becoming simpler to facilitate the implementation of the game. Below are all the functionalities and parts that were possible and not to implement.
  
 1. Navbar;
 
@@ -124,7 +124,7 @@ For some/all of your features, you may choose to reference the specific project 
 In addition, you may also use this section to discuss plans for additional features to be implemented in the future:
 
 ### Features Left to Implement
-- Another feature idea
+- The second phase of the game called battle mode was not possible to implement due the lack of time. The battle mode would consist of after the memory game the user would select six Pokemon from the pool available from the already finished memory game. With this selection of 6 Pokemon the program would randomly choose the equivalent number of Pokemon (6). The user would select the order of reveal of 6 Pokemon and then the disclose or battle between the types would occur one by one (fire vs water). The number of victorious Pokemon would multiply the score of the user.
 
 ## Technologies Used
 
@@ -208,10 +208,10 @@ The function responsible to fetch information from API, organize in objects then
 The button shuffle contains an function called ramdomPokeArray that was inspired but edited from this [source](https://flaviocopes.com/how-to-shuffle-array-javascript/) from **Flavio Copes**.
 
 ### Content
-- The text for section Y was copied from the [Wikipedia article Z](https://en.wikipedia.org/wiki/Z)
+- All the contend of this website was created for myself except for all the information presented on the cards that has their source from [PokeAPI](https://pokeapi.co/). 
 
 ### Media
-- The photos used in this site were obtained from ...
+- The images from all Pokemon come from [PokeAPI](https://pokeapi.co/).
 
 ### Acknowledgements
 
